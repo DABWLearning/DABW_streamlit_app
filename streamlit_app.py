@@ -74,9 +74,9 @@ except URLError as e:
 #import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cnx.close()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
+my_cnx.close()
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
